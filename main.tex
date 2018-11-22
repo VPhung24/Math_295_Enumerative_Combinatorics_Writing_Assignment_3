@@ -1,0 +1,73 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+%\renewcommand{\qedsymbol}{\filledbox}
+ 
+\title{Writing Assignment 3}%replace X with the appropriate number
+\author{Vivian Phung\\ \\ %replace with your name
+MATH 295 - Enumerative Combinatorics\\With Professor Amy Myers} 
+
+\maketitle
+ 
+
+\textbf{Section 7.1 Exercise 6(b):} Find a recurrence relation for the number of $n$-digit ternary sequences with no pair of consecutive 1s. \\
+
+As a ternary sequence, the digit choices are $0$, $1$, and $2$. The initial conditions for this recursive relations is $a_{0} = 1$ and $a_{1} = 3$ because
+\begin{itemize}
+  \item $a_{0} = 1$: An empty sequence of $0$ digits occurs $1$ time (when $n = 0$)
+  \item $a_{1} = 3$: A sequence of 1 can be either 0, 1, or 2.
+\end{itemize} \\
+
+To enumerate $n$-digit ternary sequences with no pair of consecutive $1$s, let's look at the possible cases. If there are $n$ digits in the sequence, the first digit can be
+\begin{itemize}
+  \item 0; There are $a_{n-1}$ possible sequences that can be placed after 0
+  \item 1; To definitively not get any consecutive 1s, the second digit in the sequence can be
+  \begin{itemize}
+      \item 0; There are $a_{n-2}$ possible sequences that can be placed after 10
+      \item 2; There are $a_{n-2}$ possible sequences that can be placed after 12
+    \end{itemize}
+  \item 2; There are $a_{n-1}$ possible sequences that can be placed after 2
+\end{itemize} \\
+
+Since these cases are disjoint, add the values to find the recursive relation equation:
+\begin{align*}
+a_{n} &= a_{n-1} + a_{n-2} + a_{n-2} + a_{n-1} \\
+a_{n} &= 2 \cdot a_{n - 1} +  2 \cdot a_{n - 2}
+\end{align*}
+
+
+Thus, the recurrence relation for the number of $n$-digit ternary sequences with no pair of consecutive $1$s is $a_{n} = 2 \cdot a_{n - 1} +  2 \cdot a_{n - 2}$ where $a_{0} = 1$ and $a_{1} = 3$.\\
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+ 
+\end{document}
